@@ -4,7 +4,7 @@ body{position:relative}.overlay,.sideMenu{position:fixed;bottom:0}.overlay{top:0
     width: inherit;
     min-width: 300px;
     max-width: 300px;
-    background-color:#538bb0;
+    background-color:#dae3e9;
     float: left;
     height:100vh;
     position:relative;
