@@ -34,10 +34,10 @@ def generate_unique_slug(_class, field):
 
 class Note(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    note_title = models.CharField(max_length=200)
-    note_content = encrypt(models.TextField(null=True, blank=True))
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    note_title = models.CharField(verbose_name='Título' ,max_length=200)
+    note_content = encrypt(models.TextField(verbose_name='Conteúdo', null=True, blank=True))
+    created_at = models.DateTimeField(verbose_name='Data de Criação', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='Data de Atualização', auto_now=True)
     slug = models.SlugField(max_length=200, unique=True)
     tags = TaggableManager()
     signer = Signer(salt='notes.Note')
