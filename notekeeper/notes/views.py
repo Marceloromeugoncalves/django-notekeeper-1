@@ -3,7 +3,7 @@ from django.http import HttpResponse, Http404
 from .models import Note, AddNoteForm
 from django.contrib import messages
 import json, os
-from datetime import datetime, timedelta 
+from datetime import datetime, timedelta
 from django.core.paginator import Paginator
 from django.http import JsonResponse, HttpResponse
 from io import BytesIO
@@ -20,10 +20,10 @@ def link_callback(uri, rel):
     resources
     """
     # use short variable names
-    sUrl = settings.STATIC_URL      # Typically /static/
-    sRoot = settings.STATIC_ROOT    # Typically /home/userX/project_static/
-    mUrl = settings.MEDIA_URL       # Typically /static/media/
-    mRoot = settings.MEDIA_ROOT     # Typically /home/userX/project_static/media/
+    sUrl = settings.STATIC_URL  # Typically /static/
+    sRoot = settings.STATIC_ROOT  # Typically /home/userX/project_static/
+    mUrl = settings.MEDIA_URL  # Typically /static/media/
+    mRoot = settings.MEDIA_ROOT  # Typically /home/userX/project_static/media/
 
     # convert URIs to absolute system paths
     if uri.startswith(mUrl):
@@ -35,9 +35,9 @@ def link_callback(uri, rel):
 
     # make sure that file exists
     if not os.path.isfile(path):
-            raise Exception(
-                'media URI must start with %s or %s' % (sUrl, mUrl)
-            )
+        raise Exception(
+            'media URI must start with %s or %s' % (sUrl, mUrl)
+        )
     return path
 
 
@@ -46,7 +46,7 @@ def render_to_pdf(template_src, context_dict={}):
         Helper function to generate pdf from html
     '''
     template = get_template(template_src)
-    html  = template.render(context_dict)
+    html = template.render(context_dict)
     result = BytesIO()
     pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), result, link_callback=link_callback)
     if not pdf.err:
@@ -158,6 +158,7 @@ def confirm_delete_note(request, pk):
     }
     return render(request, 'modals/delete_note_modal.html', context)
 
+
 def delete_note(request, pk):
     note = get_object_or_404(Note, pk=pk)
     if note.user != request.user:
@@ -172,9 +173,9 @@ def search_note(request):
     if request.is_ajax():
         q = request.GET.get('term')
         notes = Note.objects.filter(
-                note_title__icontains=q,
-                user=request.user
-            )[:10]
+            note_title__icontains=q,
+            user=request.user
+        )[:10]
         results = []
         for note in notes:
             note_json = {}
@@ -211,8 +212,8 @@ def get_all_notes_tags(request, slug):
     notes = Note.objects.filter(user=request.user).order_by('-updated_at')[:10]
     add_note_form = AddNoteForm()
     context = {
-        'tag':tag,
-        'all_notes':all_notes,
+        'tag': tag,
+        'all_notes': all_notes,
         'notes': notes,
         'add_note_form': add_note_form
     }
