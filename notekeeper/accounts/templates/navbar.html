@@ -17,22 +17,22 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="notes_dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Notes
+                    Notas
                 </a>
                 <div class="dropdown-menu" aria-labelledby="notes_dropdown">
                     <a id="a_d" class="dropdown-item" data-toggle="modal" data-target="#add_note" style="cursor: pointer;">
-                        Add Note
+                        Adicionar Nota
                     </a>
-                    <a class="dropdown-item" href="{% url 'notes' %}">Show All Notes</a>
+                    <a class="dropdown-item" href="{% url 'notes' %}">Mostrar Todas as Notas</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Welcome, {{ request.user.username }}
+                    Bem vindo, {{ request.user.username }}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'change_password' %}">Change Password</a>
-                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                    <a class="dropdown-item" href="{% url 'change_password' %}">Trocar Senha</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Sair</a>
                 </div>
             </li>
         </ul>
