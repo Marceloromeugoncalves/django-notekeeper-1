@@ -3,6 +3,10 @@ A pretty easy django notes app. Have a note save it!
 
 ### Built with :heart: and :coffee: by [`Omkar Pathak`](http://www.omkarpathak.in/)
 
+## Important
+
+Python version 3.7 is required to download the PDF note.
+
 ## Features
 
 - CRUD notes
